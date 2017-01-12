@@ -1,0 +1,19 @@
+{
+  // Use IntelliSense to find out which attributes exist for node debugging
+  // Use hover for the description of the existing attributes
+  // For further information visit https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [{
+      "name": "Debug Test",
+      "type": "node2",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node",
+      "program": "${workspaceRoot}/node_modules/.bin/protractor",
+      "args": [
+        "${workspaceRoot}/tests/protractor.conf.js"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}"
+    }
+  ]
+}

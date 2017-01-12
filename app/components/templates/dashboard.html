@@ -1,0 +1,141 @@
+<md-content layout="row" layout-wrap>
+    <div flex="100" class="md-padding" ng-if="acl.hasRole('participant')">
+        <md-content class="md-whiteframe-1dp">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button">
+                        <md-icon>edit</md-icon>
+                    </md-button>
+                    &nbsp;&nbsp; {{'test.new' | translate}}
+                </div>
+            </md-toolbar>
+            <md-content class="md-padding">
+                <form name="testCodeForm" ng-submit="doTest()" layout="column" flex layout-fill>
+                    <md-input-container>
+                        <label>{{'schedule.code' | translate}}</label>
+                        <input type="text" ng-model="model.code" name="code" minlength="8" md-maxlength="8" required/>
+                        <div ng-messages="testCodeForm.code.$error">
+                            <div ng-message="required">{{'error.validation.required' | translate}}</div>
+                            <div ng-message="minlength">{{'error.validation.minLength' | translate:'{num: 8}'}}</div>
+                            <div ng-message="md-maxlength">{{'error.validation.maxLength' | translate:'{num: 8}'}}</div>
+                        </div>
+                    </md-input-container>
+                    <md-button type="submit" class="md-primary md-raised" ng-disabled="testCodeForm.$invalid">
+                        {{'test.new.submit' | translate}}
+                    </md-button>
+                </form>
+            </md-content>
+        </md-content>
+    </div>
+    <div flex="100" class="md-padding">
+        <md-content class="md-whiteframe-1dp">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button">
+                        <md-icon>person</md-icon>
+                    </md-button>
+                    {{'user.profile' | translate}}
+                    <span flex></span>
+                    <md-button ng-click="updateProfile()">
+                        <md-icon>save</md-icon>
+                        {{'user.profile.submit' | translate}}
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content class="profile md-padding" layout="row" flex layout-fill>
+                <div flex="30" ng-style="{'background-image': 'url(assets/images/material-backgrounds/5.jpg)'}">
+                    <div layout="column" layout-fill>
+                        <div layout="row" layout-align="center center" flex="80">
+                            <img src="assets/images/user.png" class="avatar" />
+                        </div>
+                        <div layout="row" flex>
+                            <p class="user">
+                                {{UCWords(currentUser.roles[2])}}<br/> {{UCWords(currentUser.name)}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div flex class="md-padding">
+                    <form name="userForm" novalidate>
+                        <formly-form model="model.user" fields="model.userFields"></formly-form>
+                    </form>
+                </div>
+            </md-content>
+        </md-content>
+    </div>
+    <div flex="50" class="md-padding" ng-if="acl.hasRole('guru')">
+        <md-content class="dash-item md-whiteframe-1dp" layout="column" flex>
+            <md-toolbar md-scroll-shrink>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button">
+                        <md-icon>business_center</md-icon>
+                    </md-button>
+                    &nbsp;&nbsp; {{'dashboard.guru.package.total' | translate}}
+                </div>
+            </md-toolbar>
+            <div class="md-padding">
+                <md-radio-group class="md-padding" ng-disabled="!chart1.loaded" ng-model="chart1.scale" ng-change="chart1.change()" layout="row"
+                    layout-align="center center">
+                    <md-radio-button ng-value="'daily'">
+                        {{'chart.type.daily' | translate}}
+                    </md-radio-button>
+                    <md-radio-button ng-value="'monthly'">
+                        {{'chart.type.monthly' | translate}}
+                    </md-radio-button>
+                    </md-radio-group>
+                    <div>
+                        <div ng-if="!chart1.loaded" layout="row" layout-sm="column" layout-align="space-around">
+                            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                        </div>
+                        <canvas ng-if="chart1.loaded" class="chart chart-bar" chart-data="chart1.data" chart-labels="chart1.labels" chart-series="chart1.series"></canvas>
+                        <div ng-if="chart1.loaded">
+                            <md-list flex>
+                                <div ng-repeat="streams in chart1.streams">
+                                    <md-subheader ng-if="streams.length" class="md-no-sticky">
+                                        {{chart1.labels[$index]}}
+                                    </md-subheader>
+                                    <md-divider ng-if="streams.length"></md-divider>
+                                    <md-list-item ng-if="streams.length" class="md-1-line" ng-repeat="stream in streams">
+                                        <div class="md-list-item-text" layout="column">
+                                            <md-button ui-sref="app.package.view({id:stream.id})">
+                                                {{ stream.name }} ({{stream.count}} {{'question.question' | translate}})
+                                            </md-button>
+                                        </div>
+                                    </md-list-item>
+                                </div>
+                            </md-list>
+                        </div>
+                    </div>
+            </div>
+        </md-content>
+    </div>
+    <div flex="50" class="md-padding" ng-if="acl.hasRole('guru')">
+        <md-content class="dash-item md-whiteframe-1dp">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button">
+                        <md-icon>assignment</md-icon>
+                    </md-button>
+                    &nbsp;&nbsp; {{'dashboard.guru.question.total' | translate}}
+                </div>
+            </md-toolbar>
+            <div class="md-padding">
+                <md-radio-group class="md-padding" ng-disabled="!chart2.loaded" ng-model="chart2.scale" ng-change="chart2.change()" layout="row"
+                    layout-align="center center">
+                    <md-radio-button ng-value="'daily'">
+                        {{'chart.type.daily' | translate}}
+                    </md-radio-button>
+                    <md-radio-button ng-value="'monthly'">
+                        {{'chart.type.monthly' | translate}}
+                    </md-radio-button>
+                    </md-radio-group>
+                    <div>
+                        <div ng-if="!chart2.loaded" layout="row" layout-sm="column" layout-align="space-around">
+                            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                        </div>
+                        <canvas ng-if="chart2.loaded" class="chart chart-bar" chart-data="chart2.data" chart-labels="chart2.labels" chart-series="chart2.series"></canvas>
+                    </div>
+            </div>
+        </md-content>
+    </div>
+</md-content>

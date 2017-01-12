@@ -1,0 +1,48 @@
+<div layout="row" layout-fill>
+    <div layout="column" flex role="main">
+        <br/>
+        <br/>
+        <div layout-align="center center" layout="row">
+            <img style="max-width: 200px; height: auto;" src="assets/images/icon.png"/>
+        </div>
+        <br/>
+        <br/>
+        <div layout="row" layout-align="center">
+            <md-whiteframe class="md-whiteframe-z1" layout="column" flex="30" layout-padding>
+                <md-content class="md-padding">
+                    <md-radio-group class="md-padding" ng-model="loginType" ng-change="loginTypeChange()" layout="row"
+                                    layout-align="center center">
+                        <md-radio-button ng-value="'!participant'">
+                            {{'login.type.nonParticipant' | translate}}
+                        </md-radio-button>
+                        <md-radio-button ng-value="'participant'">
+                            {{'login.type.participant' | translate}}
+                        </md-radio-button>
+                    </md-radio-group>
+                    <md-input-container class="md-block" ng-if="loginType === '!participant'">
+                        <label>{{'user.email' | translate}}</label>
+                        <input ng-model="user.email">
+                    </md-input-container>
+                    <md-input-container class="md-block" ng-if="loginType === 'participant'">
+                        <label>{{'user.id' | translate}}</label>
+                        <input ng-model="user.username">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>{{'user.password' | translate}}</label>
+                        <input ng-model="user.password" type="password">
+                    </md-input-container>
+                    <md-input-container layout-align="center center" class="md-block">
+                        <div layout="row" layout-sm="column" layout-align="center center">
+                            <md-button class="md-raised md-primary" flex="50" flex-sm="100" ng-click="login(user)">
+                                {{'login.submit' | translate}}
+                            </md-button>
+                        </div>
+                    </md-input-container>
+                </md-content>
+            </md-whiteframe>
+        </div>
+        <br/>
+        <br/>
+        <small style="text-align: center; color: #999999">Copyright &copy; 2016 Risen Labs Company<br/>www.risen-labs.com</small>
+    </div>
+</div>

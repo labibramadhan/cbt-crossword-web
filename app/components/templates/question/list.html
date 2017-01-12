@@ -1,0 +1,99 @@
+<md-content class="md-whiteframe-1dp" ng-show="crud.search.show">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                {{'question.list.search' | translate}}
+            </h3>
+            <div flex></div>
+            <md-button class="md-icon-button" ng-click="crud.search.show = false">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <form name="crud.search.form" novalidate>
+            <formly-form model="crud.search.values" fields="crud.search.fields" form="crud.search.form"></formly-form>
+        </form>
+        <md-button class="md-block md-primary md-raised" ng-click="fetch()">
+            <md-icon>search</md-icon>
+            {{'action.search' | translate}}
+        </md-button>
+        <md-button class="md-block md-primary md-raised" ng-click="clearSearch()">
+            <md-icon>delete</md-icon>
+            {{'action.clear' | translate}}
+        </md-button>
+    </md-content>
+</md-content>
+<br/>
+<md-content class="md-whiteframe-1dp">
+    <md-toolbar class="md-table-toolbar md-default" ng-hide="crud.selected.length">
+        <div class="md-toolbar-tools">
+            <h2 class="md-title">{{'question.list.all' | translate}}</h2>
+            <div flex></div>
+            <md-button class="md-icon-button" ng-click="fetch()" translate-attr="{title: 'button.refresh'}">
+                <md-icon>refresh</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="crud.search.show = !crud.search.show" translate-attr="{title: 'button.search'}">
+                <md-icon>search</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="importDialog($event)" translate-attr="{title: 'button.import'}">
+                <md-icon>cloud_upload</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-toolbar class="md-table-toolbar md-accent alternate" ng-show="crud.selected.length">
+        <div class="md-toolbar-tools" layout-align="space-between center">
+            <div>{{crud.selected.length}} {{'data.chosen' | translate}}</div>
+            <md-button class="md-icon-button" ng-click="confirmDelete($event)">
+                <md-icon>delete</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-table-container>
+        <table md-table md-row-select multiple ng-model="crud.selected" md-progress="promise">
+            <thead md-head md-order="crud.order" md-on-reorder="fetch">
+            <tr md-row>
+                <th md-column md-order-by="question"><span>{{'question.question' | translate}}</span></th>
+                <th md-column md-order-by="answer"><span>{{'question.answer' | translate}}</span></th>
+                <th md-column md-order-by="tag"><span>{{'question.tag' | translate}}</span></th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr ng-show="crud.records.length" md-row md-select="record" md-select-id="id" md-auto-select
+                ng-repeat="record in crud.records">
+                <td md-cell>{{record.question}}</td>
+                <td md-cell>{{record.answer}}</td>
+                <td md-cell>{{record.tag}}</td>
+                <td md-cell style="text-align: right">
+                    <md-menu md-position-mode="target-right bottom">
+                        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                            <md-icon>arrow_drop_down_circle</md-icon>
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item>
+                                <md-button ui-sref="app.question.view({id: record.id})">
+                                    <md-icon md-menu-align-target>pageview</md-icon>
+                                    {{'button.view' | translate}}
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ui-sref="app.question.update({id: record.id})">
+                                    <md-icon md-menu-align-target>edit</md-icon>
+                                    {{'button.edit' | translate}}
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+
+    <md-table-pagination md-limit="crud.query.filter.limit" md-limit-options="[10, 20, 50, 100]"
+                         md-page="crud.page"
+                         md-label="paginationLabel"
+                         md-total="{{crud.total}}" md-on-paginate="fetch" md-page-select></md-table-pagination>
+</md-content>

@@ -1,0 +1,19 @@
+<md-dialog flex="50">
+    <md-dialog-content>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 class="title">{{'package.question.browse' | translate}}</h2>
+            </div>
+        </md-toolbar>
+        <md-content layout="column" layout-padding flex>
+            <formly-form model="addModel.values" fields="addModel.fields">
+            </formly-form>
+        </md-content>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-click="choose()">
+            <md-icon>check</md-icon>
+            {{'package.question.select' | translate}}
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

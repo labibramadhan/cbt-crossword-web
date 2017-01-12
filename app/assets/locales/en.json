@@ -1,0 +1,228 @@
+{
+  "total": "Total",
+  "incorrect": "Incorrect",
+  "correct": "Correct",
+  "hour": "Hour(s)",
+  "minute": "Minute(s)",
+  "second": "Second(s)",
+
+  "button.back": "Back",
+  "button.cancel": "Cancel",
+  "button.refresh": "Refresh Data",
+  "button.search": "Search",
+  "button.import": "Import Data",
+  "button.view": "Detail",
+  "button.edit": "Update",
+  "button.delete": "Delete",
+  "button.save": "Save",
+  "button.hesitate": "Unsure",
+  "button.confidence": "Sure",
+  "button.across": "Across",
+  "button.down": "Down",
+  "button.finish": "Finish",
+
+  "time.hour": "Hour(s)",
+  "time.minute": "Minute(s)",
+  "time.second": "Second(s)",
+
+  "pagination.page": "Page",
+  "pagination.rowsPerPage": "Rows per page",
+  "pagination.of": "Of",
+
+  "action.search": "Search Data",
+  "action.clear": "Clear Form",
+
+  "data.chosen": "data selected",
+
+  "datepicker.pick": "Choose a Date",
+
+  "import.file": "Pick file to import",
+
+  "login.type.nonParticipant": "Non Participant",
+  "login.type.participant": "Participant",
+  "login.submit": "Login",
+
+  "user.name": "Full Name",
+  "user.id": "Participant ID",
+  "user.email": "Email",
+  "user.role": "Role",
+  "user.password": "Password",
+  "user.newPassword": "New Password",
+  "user.newPasswordConfirm": "Retype New Password",
+
+  "user.multiple.label": "User No. {0}",
+  "user.multiple.add": "Add Another User",
+  "user.type": "User Role Type",
+  "user.type.all": "All Roles",
+  "user.type.admin": "Admin",
+  "user.type.guru": "Guru",
+  "user.type.participant": "Participant",
+
+  "user.profile": "Profile",
+  "user.profile.submit": "Update",
+  "user.import": "Import Users",
+  "user.import.submit": "Import",
+  "user.list.search": "Search Users",
+  "user.list.all": "All Users",
+
+  "question.question": "Question",
+  "question.answer": "Answer",
+  "question.tag": "Tag",
+  "question.import": "Import Questions",
+  "question.import.submit": "Import",
+  "question.list.search": "Search Questions",
+  "question.list.all": "All Questions",
+
+  "question.multiple.label": "Question No. {0}",
+  "question.multiple.add": "Add Another Question",
+
+  "package.name": "Package Name",
+  "package.sanction": "Cheating Sanction (Grade Decrement)",
+  "package.sanctionTrigger": "Duration Considered as Cheating",
+  "package.list.search": "Search Question Packages",
+  "package.list.all": "All Question Packages",
+  "package.import": "Import Packages",
+  "package.import.submit": "Import",
+  "package.question.browse": "Browse Existing Question",
+  "package.question.select": "Select Question",
+  "package.question.import": "Import Questions",
+  "package.question.import.submit": "Import",
+
+  "package.schedule.name": "Schedule Name",
+  "package.schedule.code": "Code",
+  "package.schedule.questionTotal": "Total Questions to Fill",
+  "package.schedule.showGrade": "Show Result Directly After Test?",
+  "package.schedule.showGrade.show": "Show",
+  "package.schedule.showGrade.hide": "Don't Show",
+  "package.schedule.start": "Start",
+  "package.schedule.start.time": "Start Time",
+  "package.schedule.end": "Finish",
+  "package.schedule.end.time": "End Time",
+  "package.schedule.add": "Create a New Test Schedule",
+  "package.schedule.list.search": "Search Package Schedules",
+  "package.schedule.list.all": "All Package Schedules",
+  "package.schedule.import": "Import Package Schedules",
+  "package.schedule.import.submit": "Import",
+  "package.schedule.grade.average": "Grade Averages Each Schedules",
+
+  "package.multiple.label": "Package No. {0}",
+  "package.multiple.add": "Add Another Package",
+  "package.question.multiple.add.existing": "Add an Existing Question",
+  "package.question.multiple.add.existing.tag": "Search by Tag",
+  "package.question.multiple.add.choose": "Select Question",
+
+  "button.package.schedule.add": "Create a New Package Schedule",
+  "button.package.schedule.list": "Manage Package Schedules",
+  "button.package.question.import": "Import Questions",
+
+  "dashboard.guru.package.total": "Question Package Total",
+  "dashboard.guru.question.total": "Question Total",
+
+  "chart.type.daily": "Daily",
+  "chart.type.monthly": "Monthly",
+
+  "test.new": "Take a New Test",
+  "test.new.submit": "Take Test Now",
+  "test.time.up": "Time UP!",
+  "test.across": "Across",
+  "test.down": "Down",
+  "test.answer": "Correct Answers",
+  "test.remark.hesitate": "Answered with hesitation",
+  "test.remark.confidence": "Answered with confidence",
+  "test.remark.empty": "Not answered",
+  "test.fill": "Answer",
+  "test.fill.answer": "Fill Your Answer",
+
+  "grade.list.search": "Search Grades",
+  "grade.list.all": "All Grades",
+  "button.grade.export": "Export Grades",
+
+  "answer.duration": "Test Duration",
+  "answer.cheat.detected": "Terdeteksi Mencontek Sebanyak",
+  "answer.result": "Your Test Result",
+  "answer.rank.incorrect": "Incorrect Answers Rank",
+  "answer.rank.correct": "Correct Answers Rank",
+
+  "answer.rank": "Rank",
+  "answer.name": "Participant Name",
+  "answer.id": "Participant ID",
+  "answer.grade": "Grade",
+  "answer.list.search": "Search Answers",
+  "answer.list.all": "All Answers",
+
+  "schedule.code": "Question Code",
+
+  "menu.main": "Main Menu",
+  "menu.show": "Show Menu",
+  "menu.hide": "Hide Menu",
+  "menu.dashboard": "Dashboard",
+  "menu.user": "User",
+  "menu.user.list": "All Users",
+  "menu.user.add": "Create User",
+  "menu.user.edit": "Edit User",
+  "menu.user.view": "User Detail",
+  "menu.package": "Question Package",
+  "menu.package.list": "All Question Packages",
+  "menu.package.add": "Create Question Package",
+  "menu.package.edit": "Update Question Package",
+  "menu.package.view": "Question Package Detail",
+  "menu.package.schedule.list": "All Question Package Schedules",
+  "menu.question": "Question",
+  "menu.question.list": "All Questions",
+  "menu.question.add": "Create Question",
+  "menu.question.edit": "Update Question",
+  "menu.question.view": "Question Detail",
+  "menu.grade": "Grade",
+  "menu.grade.list": "All Grades",
+  "menu.grade.answer.list": "All Grades Answers",
+  "menu.grade.answer.view": "Grade Answer Detail",
+  "menu.test.start": "Test",
+  "menu.test.finish": "Test Finished",
+  "menu.logout": "Logout",
+
+  "error": "Unknown error ocurred",
+
+  "error.result.empty.for": "No result for:",
+
+  "error.validation.required": "Field required",
+  "error.validation.minLength": "{{num}} minimum length of characters/numbers",
+  "error.validation.maxLength": "{{num}} maximum length of characters/numbers",
+
+  "error.user.profile.incorrectPassword": "Unable to update profile: you have typed incorrect current password.",
+
+  "error.package.schedule.inactive": "This test is inactive.",
+  "error.package.schedule.taken": "You have taken and finished this test before.",
+  "error.package.schedule.notFound": "Invalid code (not found)",
+  "error.package.schedule.unqualified": "Cannot take this test, this test has only {{total}} questions.",
+
+  "confirm.delete.title": "Are you sure you want to delete this data?",
+  "confirm.delete.description": "You cannot recover once deleted.",
+
+  "confirm.test.fill.title": "Fill the Answer",
+  "confirm.test.fill.description": "Down or Across?",
+
+  "confirm.test.finish.title": "Finish Test",
+  "confirm.test.finish.description": "Do you want to submit your answers right now?",
+
+  "confirm.formly.repeatable.delete.title": "Do you want to delete {{suffix}}?",
+  "confirm.formly.repeatable.delete.description": "WARNING: Deleted data cannot be recovered.",
+  "confirm.formly.repeatable.deleted": "Successfully deleted {{suffix}}",
+
+  "success.deleted": "Data successfully deleted.",
+
+  "success.import": "Successfully imported {{total}} {{name}}(s)",
+  "success.import.processed": "Successfully processed {{total}} {{name}}(s)",
+
+  "success.user.profile.updated": "Profile updated.",
+
+  "success.user.created": "Successfully created a new user.",
+  "success.user.updated": "User updated.",
+
+  "success.question.created": "Successfully created a question.",
+  "success.question.updated": "Question updated.",
+
+  "success.package.created": "Successfully created a question package.",
+  "success.package.updated": "Question package updated.",
+
+  "success.package.schedule.saved": "Schedule saved."
+}

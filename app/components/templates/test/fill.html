@@ -1,0 +1,34 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            {{'test.fill' | translate}}
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="md-padding">
+        <p class="text-center">
+            {{cell.clue}}
+        </p>
+        <form name="fillForm">
+            <md-input-container class="md-block">
+                <label>{{'test.fill.answer' | translate}}</label>
+                <input type="text" name="answer" ng-model="model.value" required minlength="{{cell.word.length}}" md-maxlength="cell.word.length">
+                <div ng-messages="fillForm.answer.$error">
+                    <div ng-message="required">{{'error.validation.required' | translate}}</div>
+                    <div ng-message="minlength">{{'error.validation.minLength' | translate:'{num: cell.word.length}'}}</div>
+                    <div ng-message="md-maxlength">{{'error.validation.maxLength' | translate:'{num: cell.word.length}'}}</div>
+                </div>
+            </md-input-container>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-default md-raised" ng-click="actionDelete()">
+            <md-icon>delete</md-icon> {{'button.delete' | translate}}
+        </md-button>
+        <md-button class="md-warn md-raised" ng-disabled="fillForm.$invalid" ng-click="actionUnsure()">
+            <md-icon>help_outline</md-icon> {{'button.hesitate' | translate}}
+        </md-button>
+        <md-button class="md-primary md-raised" ng-disabled="fillForm.$invalid" ng-click="actionSure()">
+            <md-icon>check</md-icon> {{'button.confidence' | translate}}
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

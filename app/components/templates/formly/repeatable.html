@@ -1,0 +1,35 @@
+<div class="{{hideRepeat}}">
+    <div class="repeatsection" ng-repeat="element in model[options.key]" ng-init="fields = copyFields(to.fields);">
+        <md-toolbar ng-if="to.headerText">
+            <div class="md-toolbar-tools">
+                {{to.headerText.replace("{0}", $index + 1)}}
+                <span class="flex"></span>
+                <md-button ng-if="CRUDState == 'create' || CRUDState == 'update'" title="{{customAction.title}}" class="md-icon-button" ng-repeat="customAction in to.customActions" type="button" ng-click="customAction.click($event, $index, element, to, fields)">
+                    <md-icon>{{customAction.icon}}</md-icon>
+                </md-button>
+                <md-button title="Kosongkan" class="md-icon-button" type="button" ng-if="to.applyClear && CRUDState == 'create' || CRUDState == 'update'" ng-click="clearField(fields, $index, $event)">
+                    <md-icon>close</md-icon>
+                </md-button>
+                <md-button title="Hapus" class="md-icon-button" type="button" ng-if="model[options.key].length > 1 && CRUDState == 'create' || CRUDState == 'update'" ng-click="removeField($index, $event)">
+                    <md-icon>delete</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content class="md-whiteframe-1dp md-padding">
+            <formly-form
+                    fields="fields"
+                    model="element"
+                    form="form"
+            >
+            </formly-form>
+        </md-content>
+        <br/>
+    </div>
+    <div layout="column">
+        <md-button class="md-primary md-raised" ng-if="CRUDState == 'create' || CRUDState == 'update'" ng-click="addNew()">
+            <md-icon>add_circle_outline</md-icon>
+            {{to.btnText}}
+        </md-button>
+    </div>
+    <br/>
+</div>

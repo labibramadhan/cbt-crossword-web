@@ -1,0 +1,5 @@
+app/components/libraries
+app/components/services/rest.js
+node_modules
+app/bower_components
+app/assets

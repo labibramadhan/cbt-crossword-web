@@ -1,0 +1,6 @@
+{
+  "directory": "app/bower_components",
+  "ignoredDependencies": [
+    "chart.js"
+  ]
+}

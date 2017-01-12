@@ -1,0 +1,91 @@
+<md-content class="md-whiteframe-1dp" ng-if="!chart1.loaded || chart1.loaded && chart1.labels.length">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>{{'package.schedule.grade.average' | translate}}</h3>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <div ng-if="!chart1.labels.length" layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <canvas ng-if="chart1.labels.length" class="chart chart-line" chart-data="chart1.data"
+                chart-labels="chart1.labels"
+                chart-series="chart1.series"></canvas>
+    </md-content>
+</md-content>
+<br ng-if="!chart1.loaded || chart1.loaded && chart1.labels.length"/>
+
+<md-content class="md-whiteframe-1dp" ng-show="crud.search.show">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                {{'package.schedule.list.search' | translate}}
+            </h3>
+            <div flex></div>
+            <md-button class="md-icon-button" ng-click="crud.search.show = false">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <form name="crud.search.form" novalidate>
+            <formly-form model="crud.search.values" fields="crud.search.fields" form="crud.search.form"></formly-form>
+        </form>
+        <md-button class="md-block md-primary md-raised" ng-click="fetch()">
+            <md-icon>search</md-icon>
+            {{'action.search' | translate}}
+        </md-button>
+        <md-button class="md-block md-primary md-raised" ng-click="clearSearch()">
+            <md-icon>delete</md-icon>
+            {{'action.clear' | translate}}
+        </md-button>
+    </md-content>
+</md-content>
+<br/>
+
+<md-content class="md-whiteframe-1dp">
+    <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+            <h2 class="md-title">{{'package.schedule.list.all' | translate}}</h2>
+            <div flex></div>
+            <md-button class="md-icon-button" ng-click="fetch()" translate-attr="{title: 'button.refresh'}">
+                <md-icon>refresh</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="crud.search.show = !crud.search.show" translate-attr="{title: 'button.search'}">
+                <md-icon>search</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="importDialog($event)" translate-attr="{title: 'button.import'}">
+                <md-icon>cloud_upload</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="addEditDialog($event)" translate-attr="{title: 'button.package.schedule.add'}">
+                <md-icon>add_circle</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-table-container>
+        <table md-table md-progress="promise">
+            <thead md-head md-order="crud.order" md-on-reorder="fetch">
+            <tr md-row>
+                <th md-column md-order-by="name"><span>{{'package.schedule.name' | translate}}</span></th>
+                <th md-column md-order-by="code"><span>{{'package.schedule.code' | translate}}</span></th>
+                <th md-column md-order-by="start"><span>{{'package.schedule.start' | translate}}</span></th>
+                <th md-column md-order-by="end"><span>{{'package.schedule.end' | translate}}</span></th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr ng-show="crud.records.length" md-row ng-repeat="record in crud.records" ng-click="addEditDialog($event, record)">
+                <td md-cell>{{record.name}}</td>
+                <td md-cell>{{record.code}}</td>
+                <td md-cell>{{record.start | date:'dd/MM/yyyy HH:mm'}}</td>
+                <td md-cell>{{record.end | date:'dd/MM/yyyy HH:mm'}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+
+    <md-table-pagination md-limit="crud.query.filter.limit" md-limit-options="[10, 20, 50, 100]"
+                         md-page="crud.page"
+                         md-label="paginationLabel"
+                         md-total="{{crud.total}}" md-on-paginate="fetch" md-page-select></md-table-pagination>
+</md-content>

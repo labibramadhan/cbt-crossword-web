@@ -1,0 +1,8 @@
+{
+    "eslint.enable": true,
+    "eslint.autoFixOnSave": true,
+    "javascript.validate.enable": true,
+    "editor.tabSize": 2,
+    "editor.formatOnType": true,
+    "editor.wordWrap": false
+}

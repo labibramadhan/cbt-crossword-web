@@ -1,0 +1,44 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["eslint:recommended", "angular"],
+    "globals": {
+        "_": true,
+        "__dirname": true,
+        "Blob": true,
+        "clearInterval": true,
+        "console": true,
+        "Crossword": true,
+        "CrosswordUtils": true,
+        "document": true,
+        "EventSource": true,
+        "FileReader",
+        "global": true,
+        "localStorage": true,
+        "location": true,
+        "Offline": true,
+        "module": true,
+        "moment": true,
+        "Papa": true,
+        "Promise": true,
+        "require": true,
+        "setInterval": true,
+        "setTimeout": true,
+        "window": true,
+        "XLSX": true
+    },
+    "rules": {
+        "angular/document-service": 0,
+        "angular/log": 1,
+        "angular/on-watch": 1,
+        "angular/no-private-call": 1,
+        "max-len": [2, 100, {
+            "ignoreComments": true,
+            "ignoreTrailingComments": true,
+            "ignoreUrls": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreStrings": true
+        }],
+        "no-console": 0,
+        "no-invalid-this": 0
+    }
+}

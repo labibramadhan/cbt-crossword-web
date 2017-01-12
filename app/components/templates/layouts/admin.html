@@ -1,0 +1,69 @@
+<div layout="vertical" layout-fill ng-cloak>
+    <section layout="row" flex>
+        <md-sidenav
+                class="md-sidenav-left md-raised"
+                style="height: 100%; border-right: 1px solid rgb(241, 241, 241);"
+                md-component-id="left"
+                md-disable-backdrop
+                md-is-open="showMenu"
+                md-is-locked-open="showMenu"
+                md-whiteframe="4">
+            <md-toolbar>
+                <div class="md-toolbar-tools">{{config.menuTitle}}</div>
+            </md-toolbar>
+            <div class="sidebar-profile"
+                 ng-style="{'background-image': 'url(assets/images/material-backgrounds/1.jpg)'}">
+                <img src="assets/images/user.png"
+                     class="avatar"/>
+                <p class="user">
+                    {{UCWords(currentUser.roles[2])}}<br/>
+                    {{UCWords(currentUser.name)}}
+                </p>
+            </div>
+            <md-content>
+                <md-sidemenu locked="true">
+                    <div class="sidebar-menu">
+                        <div ng-repeat="menu in menus">
+                            <md-sidemenu-group ng-if="menu.abstract">
+                                <md-sidemenu-content md-icon="{{menu.icon}}"
+                                                     md-heading="{{menu.title | translate}}" md-arrow="true">
+                                    <md-sidemenu-button ng-if="menu.childrens" ng-repeat="child in menu.childrens"
+                                                        ui-sref="{{child.name}}">
+                                        <md-icon class="material-icons">{{child.icon}}</md-icon>
+                                        {{child.title | translate}}
+                                    </md-sidemenu-button>
+                                </md-sidemenu-content>
+                            </md-sidemenu-group>
+                            <md-sidemenu-button ng-if="!menu.abstract" ui-sref="{{menu.name}}">
+                                <md-icon class="material-icons">{{menu.icon}}</md-icon>
+                                {{menu.title | translate}}
+                            </md-sidemenu-button>
+                        </div>
+                    </div>
+                </md-sidemenu>
+            </md-content>
+        </md-sidenav>
+        <md-content layout="column" flex layout-fill>
+            <md-toolbar ng-if="showHeader">
+                <div class="md-toolbar-tools">
+                    <md-button ng-if="includeMenu" translate-attr="{title: showMenu ? 'menu.hide' : 'menu.show'}" class="md-icon-button" ng-click="toggleLeftMenu()">
+                        <md-icon>more_vert</md-icon>
+                    </md-button>
+                    <h2>{{config.pageTitle}}</h2>
+                    <span flex></span>
+                    <md-button ng-click="submit($event)" ng-if="submit">
+                        <md-icon>{{submitIcon || 'save'}}</md-icon>
+                        {{submitText || 'Save'}}
+                    </md-button>
+                    <md-button ng-click="move(backTo, backParams)" ng-if="backTo && backParams">
+                        <md-icon>arrow_back</md-icon>
+                        {{'button.back' | translate}}
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content class="md-padding" id="main-content">
+                <ui-view/>
+            </md-content>
+        </md-content>
+    </section>
+</div>

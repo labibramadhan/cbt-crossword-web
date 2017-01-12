@@ -1,0 +1,94 @@
+<md-content class="md-whiteframe-1dp" ng-if="!chart1.loaded || chart1.loaded && chart1.labels.length">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>{{'answer.rank.incorrect' | translate}}</h3>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <div ng-if="!chart1.labels.length" layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <canvas ng-if="chart1.labels.length" class="chart chart-line" chart-data="chart1.data" chart-labels="chart1.labels"
+                chart-series="chart1.series"></canvas>
+    </md-content>
+</md-content>
+<br ng-if="!chart1.loaded || chart1.loaded && chart1.labels.length"/>
+<md-content class="md-whiteframe-1dp" ng-if="!chart2.loaded || chart2.loaded && chart2.labels.length">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>{{'answer.rank.correct' | translate}}</h3>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <div ng-if="!chart2.labels.length" layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <canvas ng-if="chart2.labels.length" class="chart chart-line" chart-data="chart2.data"
+                chart-labels="chart2.labels"
+                chart-series="chart2.series"></canvas>
+    </md-content>
+</md-content>
+<br/>
+<md-content class="md-whiteframe-1dp" ng-show="crud.search.show">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                {{'answer.list.search' | translate}}
+            </h3>
+            <div flex></div>
+            <md-button class="md-icon-button" ng-click="crud.search.show = false">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <form name="crud.search.form" novalidate>
+            <formly-form model="crud.search.values" fields="crud.search.fields" form="crud.search.form"></formly-form>
+        </form>
+        <md-button class="md-block md-primary md-raised" ng-click="fetch()">
+            <md-icon>search</md-icon>
+            {{'action.search' | translate}}
+        </md-button>
+        <md-button class="md-block md-primary md-raised" ng-click="clearSearch()">
+            <md-icon>delete</md-icon>
+            {{'action.clear' | translate}}
+        </md-button>
+    </md-content>
+</md-content>
+<br/>
+<md-content class="md-whiteframe-1dp">
+    <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+            <h2 class="md-title">{{'answer.list.all' | translate}} - {{schedule.package.name}} - {{schedule.name}}</h2>
+            <div flex></div>
+            <md-button class="md-icon-button" ng-click="fetch()" title="Muat ulang">
+                <md-icon>refresh</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="crud.search.show = !crud.search.show" title="Pencarian">
+                <md-icon>search</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-table-container>
+        <table md-table md-progress="promise">
+            <thead md-head>
+            <tr md-row>
+                <th md-column><span>{{'answer.rank' | translate}}</span></th>
+                <th md-column><span>{{'answer.name' | translate}}</span></th>
+                <th md-column><span>{{'answer.id' | translate}}</span></th>
+                <th md-column><span>{{'answer.grade' | translate}}</span></th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr ng-show="crud.records.length" md-row ng-repeat="record in crud.records"
+                ui-sref="app.grade.answer.view({packageSchedule_id: schedule.id, answer_id: record.id})">
+                <td md-cell>{{$index + 1}}</td>
+                <td md-cell>{{record.person.name}}</td>
+                <td md-cell>{{record.person.username}}</td>
+                <td md-cell>{{record.grade}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+</md-content>

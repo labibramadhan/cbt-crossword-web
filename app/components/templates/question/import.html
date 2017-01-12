@@ -1,0 +1,15 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2 class="title">{{'question.import' | translate}}</h2>
+    </div>
+</md-toolbar>
+<md-content layout="column" layout-padding flex>
+    <md-input-container class="md-block" md-no-float>
+        <label style="position:static;">{{'import.file' | translate}}</label>
+        <input type="file" id="import"/>
+    </md-input-container>
+    <md-button class="md-primary" id="import-trigger" ng-click="import()">
+        <md-icon class="material-icons">cloud_upload</md-icon>
+        {{'question.import.submit' | translate}}
+    </md-button>
+</md-content>

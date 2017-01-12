@@ -1,0 +1,66 @@
+<md-content class="md-whiteframe-1dp" id="test-panel">
+    <div class="md-padding" ng-show="!break">
+        <md-toolbar class="md-default">
+            <div class="md-toolbar-tools">
+                <span flex></span>
+                <span ng-show="timeUp" style='color: #F44336'>{{'test.time.up' | translate}}</span>
+                <span ng-show="!timeUp">{{timeCounter}}</span>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <table class="cw">
+            <tr ng-repeat="r in grids.length | range">
+                <td
+                        ng-repeat="c in grids[r].length | range"
+                        ng-init="cell = grids[r][c] || null;"
+                        ng-class="cell ? null : 'disable'"
+                        ng-click="cell.number ? fill($event, cell.number) : null"
+                >
+                      <span ng-if="cell.number" class="cw-number">
+                        {{cell.number}}
+                      </span>
+                    {{model.values[r][c] || '&nbsp;'}}
+                </td>
+            </tr>
+        </table>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                {{'test.down' | translate}}
+            </div>
+        </md-toolbar>
+        <md-list flex>
+            <md-list-item
+                    ng-repeat="cell in legends['down']"
+                    ng-init="cellRemark = getCellRemark(cell)"
+                    ng-click="fill($event, cell.position, cell.type)"
+                    ng-class="getCellRemark(cell) === 0 ? 'item-energized' : getCellRemark(cell) === 1 ? 'item-balanced' : '';"
+            >
+                <p>
+                    <strong>{{cell.position}}</strong>. {{cell.clue}}
+                </p>
+                <md-divider ng-if="$index !== legends['down'].length - 1"></md-divider>
+            </md-list-item>
+        </md-list>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                {{'test.across' | translate}}
+            </div>
+        </md-toolbar>
+        <md-list flex>
+            <md-list-item
+                    ng-repeat="cell in legends['across']"
+                    ng-init="cellRemark = getCellRemark(cell)"
+                    ng-click="fill($event, cell.position, cell.type)"
+                    ng-class="getCellRemark(cell) === 0 ? 'item-energized' : getCellRemark(cell) === 1 ? 'item-balanced' : '';"
+            >
+                <p>
+                    <strong>{{cell.position}}</strong>. {{cell.clue}}
+                </p>
+                <md-divider ng-if="$index !== legends['across'].length - 1"></md-divider>
+            </md-list-item>
+        </md-list>
+    </div>
+    <div ng-show="break" layout="row" layout-sm="column" layout-align="space-around">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+</md-content>

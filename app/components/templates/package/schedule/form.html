@@ -1,0 +1,19 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2 class="title">{{'package.schedule.add' | translate}}</h2>
+    </div>
+</md-toolbar>
+<md-content class="md-padding">
+    <formly-form model="schedule" fields="fields">
+        <div layout="row">
+            <md-button ng-if="isEdit" class="md-accent md-raised" ng-click="confirmDelete($event, schedule)" flex>
+                <md-icon>delete</md-icon>
+                {{'button.delete' | translate}}
+            </md-button>
+            <md-button ng-click="submit($event)" class="md-primary md-raised" flex>
+                <md-icon>save</md-icon>
+                {{'button.save' | translate}}
+            </md-button>
+        </div>
+    </formly-form>
+</md-content>

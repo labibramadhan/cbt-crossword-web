@@ -1,0 +1,18 @@
+<md-autocomplete
+        md-no-cache="!to.cache"
+        md-selected-item="model[options.key]"
+        md-search-text="to.searchText"
+        md-items="item in to.search(to.searchText)"
+        md-item-text="item[to.display]"
+        md-min-length="3"
+        md-floating-label>
+    <md-item-template>
+        <div ng-if="!to.template">
+            <span md-highlight-text="to.searchText" md-highlight-flags="^i">{{item[to.display]}}</span>
+        </div>
+        <div ng-if="to.template" compile="to.template"></div>
+    </md-item-template>
+    <md-not-found>
+        {{'error.result.empty.for' | translate}} "{{to.searchText}}".
+    </md-not-found>
+</md-autocomplete>
