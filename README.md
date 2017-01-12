@@ -2,8 +2,8 @@
 
 Created using [AngularJS Seed](https://github.com/angular/angular-seed).
 
-[![Dependency Status](https://david-dm.org/labibramadhan/ubk-tts-web.svg)](https://david-dm.org/labibramadhan/ubk-tts-web)
-[![devDependency Status](https://david-dm.org/labibramadhan/ubk-tts-web/dev-status.svg)](https://david-dm.org/labibramadhan/ubk-tts-web?type=dev)
+[![Dependency Status](https://david-dm.org/labibramadhan/cbt-crossword-web.svg)](https://david-dm.org/labibramadhan/cbt-crossword-web)
+[![devDependency Status](https://david-dm.org/labibramadhan/cbt-crossword-web/dev-status.svg)](https://david-dm.org/labibramadhan/cbt-crossword-web?type=dev)
 
 ## Table of Contents
 1. [Getting Started](#getting-started)
