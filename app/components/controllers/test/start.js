@@ -9,6 +9,7 @@ angular.module('app')
     '$interval',
     '$timeout',
     '$translate',
+    'API_BASE',
     'Utils',
     'createChangeStream',
     'LiveSet',
@@ -24,6 +25,7 @@ angular.module('app')
       $interval,
       $timeout,
       $translate,
+      API_BASE,
       Utils,
       createChangeStream,
       LiveSet,
@@ -407,7 +409,7 @@ angular.module('app')
       vm.tickTime();
       vm.tickingTime = $interval(vm.tickTime, 1000);
 
-      vm.srcSchedule = new EventSource('http://localhost:1237/api/packageSchedules/change-stream');
+      vm.srcSchedule = new EventSource(`${API_BASE}/packageSchedules/change-stream`);
       let changesSchedule = createChangeStream(vm.srcSchedule);
       changesSchedule.on('data', (changes) => {
         if (changes.target === schedule.id && changes.type === 'update') {
@@ -420,7 +422,7 @@ angular.module('app')
         }
       });
 
-      vm.srcQuestion = new EventSource('http://localhost:1237/api/questions/change-stream');
+      vm.srcQuestion = new EventSource(`${API_BASE}/questions/change-stream`);
       let changesQuestion = createChangeStream(vm.srcQuestion);
       changesQuestion.on('data', (changes) => {
         if (changes.type === 'update') {

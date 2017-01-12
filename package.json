@@ -41,12 +41,12 @@
     "webpack-stream": "^3.2.0"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "lint": "eslint app/components tests --fix",
     "serve": "http-server -a localhost -p 2796 -c-1 ./build",
-    "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update",
     "test": "babel-node ./node_modules/.bin/protractor tests/protractor.conf.js",
-    "lint": "eslint app/components tests --fix"
+    "update-webdriver": "webdriver-manager update"
   },
   "pre-commit": [
     "lint"
