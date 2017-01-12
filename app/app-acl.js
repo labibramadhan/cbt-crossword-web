@@ -70,8 +70,6 @@ angular.module('app')
 
       AclService.attachRole('guest');
 
-      await Authentication.authenticationCheck();
-      
       $rootScope.$on('$stateChangeStart', function (e, to) {
         if (!AclService.can(to.name)) {
           e.preventDefault();
@@ -88,6 +86,8 @@ angular.module('app')
           }
         }
       });
+
+      await Authentication.authenticationCheck();
 
       $rootScope.acl = AclService;
     },

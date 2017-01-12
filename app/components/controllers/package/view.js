@@ -82,7 +82,7 @@ angular.module('app')
       chart12.then((results) => {
         if (!results[0].length) vm.chart1.loaded = true;
         _.each(results[0], (r, idx) => {
-          vm.chart1.labels.push(r.pertanyaanShort);
+          vm.chart1.labels.push(r.questionShort);
           vm.chart1.data[0].push(r.count);
           if (idx === results[0].length - 1) {
             vm.chart1.loaded = true;
@@ -91,7 +91,7 @@ angular.module('app')
 
         if (!results[1].length) vm.chart2.loaded = true;
         _.each(results[1], (r, idx) => {
-          vm.chart2.labels.push(r.pertanyaanShort);
+          vm.chart2.labels.push(r.questionShort);
           vm.chart2.data[0].push(r.count);
           if (idx === results[1].length - 1) {
             vm.chart2.loaded = true;

@@ -16,7 +16,7 @@ angular.module('app')
     ) => {
       const service = {};
 
-      service.authenticationCheck = async(isLogin = false) => {
+      service.authenticationCheck = async() => {
         if (!localStorage.getItem('$LoopBack$accessTokenId')) {
           return false;
         }
@@ -24,15 +24,11 @@ angular.module('app')
           const whoAmI = await Person.whoAmI().$promise;
           AclService.flushRoles();
           $rootScope.currentUser = whoAmI;
-          _.each(whoAmI.roles, (role, idx) => {
+          for (const role of whoAmI.roles) {
             AclService.attachRole(role);
-            if (idx === whoAmI.roles.length - 1) {
-              $rootScope.menus = Menu.menus();
-              if (isLogin) {
-                $state.go('app.dashboard');
-              }
-            }
-          });
+          }
+          $rootScope.menus = Menu.menus();
+          $state.go('app.dashboard');
         } catch (e) {
           await service.logout();
           return false;
@@ -42,7 +38,7 @@ angular.module('app')
       service.login = async(model) => {
         if ((model.email || model.username) && model.password) {
           await Person.login(model).$promise;
-          await service.authenticationCheck(true);
+          await service.authenticationCheck();
         }
       };
 
