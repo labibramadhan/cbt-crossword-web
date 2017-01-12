@@ -16,16 +16,15 @@ The differences from closed source version are:
 1. [Features](#features)
     1. [Screenshots](#screenshots)
 1. [Showcase](#showcase)
-1. [Getting Started](#getting-started)
-    1. [Prerequisites](#prerequisites)
-        1. [NodeJS v6+](https://nodejs.org/en/download/)
-        1. [Bower](https://bower.io/)
-    1. [Installation](#installation)
-    1. [Configuration](#configuration)
-    1. [Testing](#testing)
-    1. [Running](#running)
-        1. Development
-        1. Production
+1. Prerequisites
+    1. [NodeJS v6+](https://nodejs.org/en/download/)
+    1. [Bower](https://bower.io/)
+1. [Installation](#installation)
+1. [Configuration](#configuration)
+1. [Testing](#testing)
+1. [Running](#running)
+    1. [Development](#development)
+    1. [Production](#production)
 
 ## Features
 - [x] Participants may do the test on mobile version application. Check out the [CBT Crossword Mobile](https://github.com/labibramadhan/cbt-crossword-mobile) project
