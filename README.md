@@ -7,6 +7,11 @@ Created using [AngularJS Seed](https://github.com/angular/angular-seed).
 
 This is the open source version of my original project called Ujian Berbasis Komputer - Teka-teki Silang (Computer Based Test - Crossword). So this closed source project does exist since 13 September 2016. The open source version initialized on 12 January 2017. Every suspicious commercials activity of this project happened before 12 January 2017 are marked as illegal.
 
+The differences from closed source version are:
+1. Variable names translated from Indonesian to English
+1. Model & code adjustments either on API Server & Mobile Application packages
+1. Using ES6 & ES7 javascript language
+
 ## Table of Contents
 1. [Features](#features)
     1. [Screenshots](#screenshots)
@@ -25,24 +30,27 @@ This is the open source version of my original project called Ujian Berbasis Kom
 ## Features
 - [x] Participants may do the test on mobile version application. Check out the [CBT Crossword Mobile](https://github.com/labibramadhan/cbt-crossword-mobile) project
 - [x] Automatically creates random crossword patterns on every participant entering the test page
+- [x] Questions data can be reused on another question package
 - [x] Limitation of test duration
 - [x] Graph of correct & incorrect answered questions analysis (rank the most incorrect & correct answered questions)
 - [x] Graph of grade average comparison each test schedules
-- [x] Rank/sort participant's grade based on the grade value
+- [x] Rank/sort participant grades based on the grade value
 
 ### Screenshots
+**NOTE: Screenshots are still using the closed source version (all of them uses Indonesian language), you can hover on any screenshot image to see summarized feature in english**
+
 <img
-title="Admin - Dashboard"
-alt="CBT Crossword Web - Admin - Dashboard"
+title="Admin - Dashboard - Update Profile"
+alt="UBK TTS | CBT Crossword Web - Admin - Dashboard"
 src="static/images/screenshots/WEB - Admin - Dashboard.png"
-width="5050"
+width="550"
 />
 
 <img
-title="Guru - Dashboard"
-alt="CBT Crossword Web - Guru - Dashboard"
-src="static/images/screenshots/WEB - Guru - Dashboard.png"
-width="5050"
+title="Guru - Dashboard - Update Profile, Packages & Questions Total Graphs"
+alt="UBK TTS | CBT Crossword Web - Guru - Dashboard"
+src="static/images/screenshots/WEB - Guru - Dashboard2.png"
+width="550"
 />
 
 ## Showcase
