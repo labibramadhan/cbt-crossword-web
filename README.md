@@ -16,9 +16,7 @@ The differences from closed source version are:
 1. [Features](#features)
     1. [Screenshots](#screenshots)
 1. [Showcase](#showcase)
-1. Prerequisites
-    1. [NodeJS v6+](https://nodejs.org/en/download/)
-    1. [Bower](https://bower.io/)
+1. [Prerequisites](#prerequisites)
 1. [Installation](#installation)
 1. [Configuration](#configuration)
 1. [Testing](#testing)
@@ -66,6 +64,10 @@ src="static/images/showcases/gess/mobile-test.jpeg"
 />
 
 This application has been presented on Gess Indonesia event on 15 September 2016 at [Balai Sidang Jakarta Convention Center](https://en.wikipedia.org/wiki/Jakarta_Convention_Center).
+
+## Prerequisites
+1. [NodeJS v6+](https://nodejs.org/en/download/)
+1. [Bower](https://bower.io/)
 
 ## Installation
 First, download the latest released zip version of this package into your local machine. Then type these commands:
