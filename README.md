@@ -32,6 +32,8 @@ The differences from closed source version are:
 - [x] Graph of correct & incorrect answered questions analysis (rank the most incorrect & correct answered questions)
 - [x] Graph of grade average comparison each test schedules
 - [x] Rank/sort participant grades based on the grade value
+- [x] Import users, questions, question packages and question package schedules from a Microsoft Excel formatted file
+- [x] Export grades to a Microsoft Excel formatted file
 
 ### Screenshots
 **NOTE: Screenshots are still using the closed source version (all of them uses Indonesian language), you can hover on any screenshot image to see summarized feature in english**
@@ -40,14 +42,42 @@ The differences from closed source version are:
 title="Admin - Dashboard - Update Profile"
 alt="UBK TTS | CBT Crossword Web - Admin - Dashboard"
 src="static/images/screenshots/WEB - Admin - Dashboard.png"
-width="550"
+width="750"
 />
 
 <img
 title="Guru - Dashboard - Update Profile, Packages & Questions Total Graphs"
 alt="UBK TTS | CBT Crossword Web - Guru - Dashboard"
 src="static/images/screenshots/WEB - Guru - Dashboard2.png"
-width="550"
+width="750"
+/>
+
+<img
+title="Participant - Test - Answers Filled"
+alt="UBK TTS | CBT Crossword Web - Participant - Test"
+src="static/images/screenshots/WEB - Peserta - Test - Sudah Isi.png"
+width="750"
+/>
+
+<img
+title="Participant - Test - Answering a Question"
+alt="UBK TTS | CBT Crossword Web - Participant - Test"
+src="static/images/screenshots/WEB - Peserta - Test - Isi Jawaban.png"
+width="750"
+/>
+
+<img
+title="Guru - Schedule Management - Grades Average Each Schedules"
+alt="UBK TTS | CBT Crossword Web - Guru - Schedule Management"
+src="static/images/screenshots/WEB - Guru - Manajemen Paket Soal - Manajemen Jadwal.png"
+width="750"
+/>
+
+<img
+title="Guru - Package Management - Correct & Incorrect Answers Rank"
+alt="UBK TTS | CBT Crossword Web - Guru - Package Management"
+src="static/images/screenshots/WEB - Guru - Manajemen Paket Soal - Detail Paket Soal.png"
+width="750"
 />
 
 ## Showcase
