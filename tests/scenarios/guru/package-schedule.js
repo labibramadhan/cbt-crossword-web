@@ -150,8 +150,9 @@ describe('schedule', () => {
       angular.element(el).scope().$evalAsync('schedule = scheduleValue', {
         scheduleValue: schedule,
       });
-      angular.element(el).scope().$evalAsync('submit()');
     }, dialog, _.extend(schedule, scheduleUpdate));
+
+    await dialog.evaluate('submit()');
 
     const scheduleNew = await ResourceHelper.query({
       model: 'PackageSchedule',

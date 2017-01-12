@@ -23,13 +23,19 @@ const mock = ({
 };
 
 const clean = async() => {
-  const pkg = await ResourceHelper.query({
+  const packages = await ResourceHelper.query({
     model: 'Package',
-    method: 'findOne',
+    method: 'find',
     param1: {
       filter: {
         where: {
-          name: 'Package Updated',
+          or: [{
+            name: 'Package Updated',
+          }, {
+            name: {
+              like: 'PackageTest%',
+            }
+          }]
         },
         include: [{
           relation: 'questions',
@@ -41,14 +47,6 @@ const clean = async() => {
         }, {
           relation: 'schedules',
           scope: {
-            include: [{
-              relation: 'answers',
-              scope: {
-                fields: {
-                  id: true,
-                }
-              }
-            }],
             fields: {
               id: true,
             }
@@ -57,33 +55,7 @@ const clean = async() => {
       },
     },
   });
-  if (pkg) {
-    for (const schedule of pkg.schedules) {
-      for (const answer of pkg.schedules.answers) {
-        await ResourceHelper.query({
-          model: 'Answer',
-          method: 'answerCheats.destroyAll',
-          param1: {
-            id: answer.id,
-          },
-        });
-        await ResourceHelper.query({
-          model: 'Answer',
-          method: 'answerItems.destroyAll',
-          param1: {
-            id: answer.id,
-          },
-        });
-      }
-
-      await ResourceHelper.query({
-        model: 'PackageSchedule',
-        method: 'answers.destroyAll',
-        param1: {
-          id: schedule.id,
-        },
-      });
-    }
+  for (const pkg of packages) {
     await ResourceHelper.query({
       model: 'Package',
       method: 'schedules.destroyAll',

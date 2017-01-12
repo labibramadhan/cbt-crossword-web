@@ -144,7 +144,8 @@ describe('test', () => {
         }
       }
 
-      expect(await element(by.binding('answer.grade')).getText()).toEqual(expectedScore);
+      const grade = await element(by.id('test-result')).evaluate('answer.grade');
+      expect(grade).toEqual(expectedScore);
 
 
       // LOGOUT

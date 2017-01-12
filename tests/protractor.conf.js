@@ -1,17 +1,19 @@
 import PackageHelper from './helper/package';
+import PackageScheduleHelper from './helper/package-schedule';
+import QuestionHelper from './helper/question';
 import UserHelper from './helper/user';
 import _ from 'lodash';
 
 /* eslint-disable no-undef,angular/window-service */
 
 exports.config = {
-  allScriptsTimeout: 30000,
+  allScriptsTimeout: 40000,
   specs: [
-    // 'scenarios/admin/user.js',
-    // 'scenarios/guru/question.js',
-    // 'scenarios/guru/package.js',
-    // 'scenarios/guru/package-schedule.js',
-    // 'scenarios/participant/test.js',
+    'scenarios/admin/user.js',
+    'scenarios/guru/question.js',
+    'scenarios/guru/package.js',
+    'scenarios/guru/package-schedule.js',
+    'scenarios/participant/test.js',
   ],
   capabilities: {
     'browserName': 'chrome',
@@ -59,7 +61,9 @@ exports.config = {
 
 
     // CLEANING
+    await PackageScheduleHelper.clean();
     await PackageHelper.clean();
+    await QuestionHelper.clean();
     await UserHelper.clean();
   },
 

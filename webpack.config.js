@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   context: path.join(__dirname, 'app'),
@@ -22,12 +23,18 @@ module.exports = {
   debug: true,
   module: {
     loaders: [{
-        test: /.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules|bower_components|libraries/,
-      },
-    ],
+      test: /.js$/,
+      loader: 'babel-loader',
+      exclude: /node_modules|bower_components|libraries/,
+    }, ],
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ],
   node: {
     fs: 'empty',
   },

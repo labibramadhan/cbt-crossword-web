@@ -81,6 +81,7 @@ gulp.task('build', ['clean'], async() => {
 });
 
 gulp.task('dev', () => {
+  delete webpackConfig.plugins;
   webpackConfig.entry = ['webpack-dev-server/client?http://localhost:8585/', webpackConfig.entry];
   new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer).listen(8585);
 });

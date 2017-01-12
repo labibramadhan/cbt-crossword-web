@@ -8,5 +8,6 @@
     "transform-async-to-generator",
     "add-module-exports",
     "transform-es2015-modules-commonjs"
-  ]
+  ],
+  "sourceMaps": "inline"
 }

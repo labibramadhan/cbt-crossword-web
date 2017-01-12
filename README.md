@@ -122,7 +122,7 @@ Testing for the first time, you have to download the configured Selenium WebDriv
 >_ npm run update-webdriver
 ```
 
-After the Selenium WebDriver installed, you can then execute the end-to-end test scenarios by using command:
+After the Selenium WebDriver installed, you have to start the [development server](#development) first, and then you can execute the end-to-end test scenarios by using command:
 ```
 >_ npm test
 ```

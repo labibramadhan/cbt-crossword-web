@@ -32,7 +32,7 @@ const query = async({
       callback(false);
     }
   }, model, method, param1, param2);
-  return JSON.parse(results); // eslint-disable-line angular/json-functions
+  return results ? JSON.parse(results) : []; // eslint-disable-line angular/json-functions
 };
 
 const create = async({

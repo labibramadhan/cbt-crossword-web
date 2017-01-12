@@ -1,4 +1,58 @@
+import ResourceHelper from './resource';
 import _ from 'lodash';
+
+const clean = async() => {
+  const questions = await ResourceHelper.query({
+    model: 'Question',
+    method: 'find',
+    param1: {
+      filter: {
+        where: {
+          question: {
+            like: '%Test%',
+          },
+        },
+        fields: {
+          id: true,
+        },
+      },
+    },
+  });
+
+  for (const question of questions) {
+    const packageQuestions = await ResourceHelper.query({
+      model: 'PackageQuestion',
+      method: 'find',
+      param1: {
+        filter: {
+          where: {
+            question_id: question.id,
+          },
+          fields: {
+            id: true,
+          },
+        },
+      },
+    });
+    for (const packageQuestion of packageQuestions) {
+      await ResourceHelper.query({
+        model: 'PackageQuestion',
+        method: 'deleteById',
+        param1: {
+          id: packageQuestion.id,
+        },
+      });
+    }
+
+    await ResourceHelper.query({
+      model: 'Question',
+      method: 'deleteById',
+      param1: {
+        id: question.id,
+      },
+    });
+  }
+};
 
 const mock = ({
   length,
@@ -17,5 +71,6 @@ const mock = ({
 };
 
 export default {
+  clean,
   mock,
 };

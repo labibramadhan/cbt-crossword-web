@@ -3,13 +3,12 @@ import ResourceHelper from './resource';
 const clean = async() => {
   const users = await ResourceHelper.query({
     model: 'Person',
-    method: 'findByRoles',
+    method: 'find',
     param1: {
-      roles: 'participant',
       filter: {
         where: {
-          username: {
-            neq: '12345',
+          name: {
+            like: '%Test%',
           },
         },
         fields: {
