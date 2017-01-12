@@ -93,7 +93,7 @@ alt="GESS INDONESIA 15 September 2016 UBK TTS MOBILE"
 src="static/images/showcases/gess/mobile-test.jpeg"
 />
 
-This application has been presented on Gess Indonesia event on 15 September 2016 at [Balai Sidang Jakarta Convention Center](https://en.wikipedia.org/wiki/Jakarta_Convention_Center).
+This application has been presented on GESS (Global Educational Supplies & Solutions) Indonesia event on 15 September 2016 at [Balai Sidang Jakarta Convention Center](https://en.wikipedia.org/wiki/Jakarta_Convention_Center).
 
 ## Prerequisites
 1. [NodeJS v6+](https://nodejs.org/en/download/)
