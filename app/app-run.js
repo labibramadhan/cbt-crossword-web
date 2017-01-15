@@ -5,23 +5,28 @@ angular.module('app')
     '$mdToast',
     '$translate',
     '$window',
+    '$timeout',
     'Utils',
     'AclService',
     'Menu',
-    async(
+    (
       $rootScope,
       $state,
       $mdToast,
       $translate,
       $window,
+      $timeout,
       Utils,
       AclService,
       Menu
     ) => {
       $rootScope.config = {
-        menuTitle: await $translate('menu.main'),
+        menuTitle: '',
         pageTitle: '',
       };
+      $translate('menu.main').then((message) => {
+        $rootScope.config.menuTitle = message;
+      });
 
       $rootScope.excludeMenu = ['app.login', 'app.test.start'];
       $rootScope.excludeHeader = ['app.login'];
@@ -96,14 +101,33 @@ angular.module('app')
       });
 
       $rootScope.timeLabel = {
-        hour: await $translate('time.hour'),
-        minute: await $translate('time.minute'),
-        second: await $translate('time.second'),
+        hour: '',
+        minute: '',
+        second: '',
       };
+      $translate('time.hour').then((message) => {
+        $rootScope.timeLabel.hour = message;
+      });
+      $translate('time.minute').then((message) => {
+        $rootScope.timeLabel.minute = message;
+      });
+      $translate('time.second').then((message) => {
+        $rootScope.timeLabel.second = message;
+      });
+
       $rootScope.paginationLabel = {
-        page: await $translate('pagination.page'),
-        rowsPerPage: await $translate('pagination.rowsPerPage'),
-        of: await $translate('pagination.of'),
+        page: '',
+        rowsPerPage: '',
+        of: '',
       };
+      $translate('pagination.page').then((message) => {
+        $rootScope.paginationLabel.page = message;
+      });
+      $translate('pagination.rowsPerPage').then((message) => {
+        $rootScope.paginationLabel.rowsPerPage = message;
+      });
+      $translate('pagination.of').then((message) => {
+        $rootScope.paginationLabel.of = message;
+      });
     },
   ]);

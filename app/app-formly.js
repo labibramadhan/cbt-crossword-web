@@ -177,6 +177,8 @@ angular.module('app')
 			$translate,
 			formlyValidationMessages
 		) => {
-			formlyValidationMessages.addStringMessage('required', $translate.instant('error.validation.required'));
+			$translate('error.validation.required').then((message) => {
+				formlyValidationMessages.addStringMessage('required', message);
+			});
 		}
 	]);

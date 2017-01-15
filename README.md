@@ -7,7 +7,8 @@ Created using [AngularJS Seed](https://github.com/angular/angular-seed).
 
 This is the open source version of my original project called Ujian Berbasis Komputer - Teka-teki Silang (Computer Based Test - Crossword). So this closed source project does exist since 13 September 2016. The open source version initialized on 12 January 2017. Every suspicious commercials activity of this project happened before 12 January 2017 are marked as illegal.
 
-The differences from closed source version are:
+The differences from the closed source version are:
+
 1. Variable names translated from Indonesian to English
 1. Model & code adjustments either on API Server & Mobile Application packages
 1. Using ES6 & ES7 javascript language
@@ -158,3 +159,23 @@ Then, you can start serving your production ready package by using this command:
 After that, you can visit http://localhost:2796 on your browser to start using this application on production mode.
 
 Note that you can change the configured production server port (2796) from [package.json](package.json) file.
+
+### Default Accounts
+
+```
+Admin
+email: admin@mailinator.com
+pass: asdqwe123
+```
+
+```
+Guru
+email: guru@mailinator.com
+pass: asdqwe123
+```
+
+```
+Participant
+email: participant@mailinator.com
+pass: asdqwe123
+```

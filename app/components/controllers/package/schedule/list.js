@@ -222,17 +222,18 @@ angular.module('app')
               vmDialog.submit = async() => {
                 let schedule = angular.copy(vmDialog.schedule);
 
-                let startTime = moment(vmDialog.schedule.startTime, 'HH:mm');
-                vmDialog.schedule.start =
-                  moment(new Date(vmDialog.schedule.start))
+                let startTime = moment(schedule.startTime, 'HH:mm');
+                schedule.start = moment(new Date(schedule.start))
                   .hour(startTime.hour())
-                  .minute(startTime.minute());
+                  .minute(startTime.minute()).toISOString();
 
-                let endTime = moment(vmDialog.schedule.endTime, 'HH:mm');
-                vmDialog.schedule.end =
-                  moment(new Date(vmDialog.schedule.end))
+                let endTime = moment(schedule.endTime, 'HH:mm');
+                schedule.end = moment(new Date(schedule.end))
                   .hour(endTime.hour())
-                  .minute(endTime.minute());
+                  .minute(endTime.minute()).toISOString();
+
+                delete schedule.startTime;
+                delete schedule.endTime;
 
                 if (!vmDialog.isEdit) {
                   await PackageSchedule.create(_.extend(schedule, {
@@ -241,7 +242,7 @@ angular.module('app')
                 } else {
                   await PackageSchedule.update({
                     where: {
-                      id: vmDialog.schedule.id,
+                      id: schedule.id,
                     },
                   }, schedule).$promise;
                 }

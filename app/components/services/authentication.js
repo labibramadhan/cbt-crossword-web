@@ -2,19 +2,37 @@ angular.module('app')
   .factory('Authentication', [
     '$rootScope',
     '$state',
-    '$http',
+    '$location',
     'AclService',
     'Menu',
     'Person',
     (
       $rootScope,
       $state,
-      $http,
+      $location,
       AclService,
       Menu,
       Person
     ) => {
       const service = {};
+
+      service.redirector = () => {
+        if ($location.path() === '/') {
+          if (AclService.hasRole('$authenticated')) {
+            $state.go('app.dashboard');
+          } else {
+            $state.go('app.login');
+          }
+        } else if (_.has($rootScope, 'stateTransition.name') && !AclService.can($rootScope.stateTransition.name)) {
+          $state.go('app');
+        }
+      }
+
+      service.authorize = (state) => {
+        if (state.name && !AclService.can(state.name)) {
+          $state.go('app');
+        }
+      }
 
       service.authenticationCheck = async() => {
         if (!localStorage.getItem('$LoopBack$accessTokenId')) {
@@ -28,7 +46,7 @@ angular.module('app')
             AclService.attachRole(role);
           }
           $rootScope.menus = Menu.menus();
-          $state.go('app.dashboard');
+          service.redirector();
         } catch (e) {
           await service.logout();
           return false;
@@ -39,6 +57,7 @@ angular.module('app')
         if ((model.email || model.username) && model.password) {
           await Person.login(model).$promise;
           await service.authenticationCheck();
+          $state.go('app');
         }
       };
 

@@ -5,7 +5,7 @@ angular.module('app')
     '$location',
     'AclService',
     'Authentication',
-    async(
+    (
       $rootScope,
       $state,
       $location,
@@ -67,27 +67,27 @@ angular.module('app')
       };
 
       AclService.setAbilities(aclData);
-
       AclService.attachRole('guest');
 
       $rootScope.$on('$stateChangeStart', function (e, to) {
-        if (!AclService.can(to.name)) {
-          e.preventDefault();
-          $state.go('app');
-        }
+        $rootScope.stateTransition = to;
       });
 
-      $rootScope.$on('$stateChangeSuccess', function (e, to) {
-        if (!to.name || to.name === 'app') {
-          if (AclService.hasRole('$authenticated')) {
-            if ($state.current.name !== 'app.dashboard') $state.go('app.dashboard');
-          } else {
-            if ($state.current.name !== 'app.login') $state.go('app.login');
+      $rootScope.$on('$stateChangeSuccess', function () {
+        delete $rootScope.stateTransition;
+      });
+
+      Authentication.authenticationCheck().then(() => {
+        $rootScope.$on('$stateChangeStart', function (e, to) {
+          if (to.name && !AclService.can(to.name)) {
+            e.preventDefault();
+            $state.go('app');
           }
-        }
+        });
+        $rootScope.$on('$stateChangeSuccess', () => {
+          Authentication.redirector();
+        });
       });
-
-      await Authentication.authenticationCheck();
 
       $rootScope.acl = AclService;
     },
