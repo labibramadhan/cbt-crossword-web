@@ -88,7 +88,7 @@ angular.module('app')
           let answer = _.find(vm.answer.answerItems, {
             question_id: cell.id
           });
-          if (answer.answer === null || answer.answer === '') {
+          if (answer.answered === null || answer.answered === '') {
             return;
           }
           let directions = [];
@@ -96,13 +96,13 @@ angular.module('app')
             case 'down':
               directions = _.range(cell.startRow, cell.endRow + 1);
               _.each(directions, (d, idx) => {
-                vm.values[d][cell.startCol] = answer.answer[idx];
+                vm.values[d][cell.startCol] = answer.answered[idx];
               });
               break;
             case 'across':
               directions = _.range(cell.startCol, cell.endCol + 1);
               _.each(directions, (d, idx) => {
-                vm.values[cell.startRow][d] = answer.answer[idx];
+                vm.values[cell.startRow][d] = answer.answered[idx];
               });
               break;
           }
@@ -117,7 +117,7 @@ angular.module('app')
         let answer = _.find(vm.answer.answerItems, {
           question_id: cell.id
         });
-        if (!answer.answer) {
+        if (!answer.answered) {
           return -1;
         }
         return answer.remark;
@@ -130,7 +130,7 @@ angular.module('app')
         if (!_.get(answer)) {
           return false;
         }
-        return answer.answer === cell.word;
+        return answer.answered === cell.word;
       };
     },
   ]);
