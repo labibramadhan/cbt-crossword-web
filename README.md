@@ -1,7 +1,5 @@
 # Computer Based Test - Crossword
 
-Created using [AngularJS Seed](https://github.com/angular/angular-seed).
-
 [![Dependency Status](https://david-dm.org/labibramadhan/cbt-crossword-web.svg)](https://david-dm.org/labibramadhan/cbt-crossword-web)
 [![devDependency Status](https://david-dm.org/labibramadhan/cbt-crossword-web/dev-status.svg)](https://david-dm.org/labibramadhan/cbt-crossword-web?type=dev)
 
@@ -10,7 +8,8 @@ This is the open source version of my original project called Ujian Berbasis Kom
 The differences from the closed source version are:
 
 1. Variable names translated from Indonesian to English
-1. Model & code adjustments either on API Server & Mobile Application packages
+1. I10n or I18n supports
+1. Model & code adjustments either on API Server or Mobile Application packages
 1. Using ES6 & ES7 javascript language
 
 ## Table of Contents
@@ -24,6 +23,7 @@ The differences from the closed source version are:
 1. [Running](#running)
     1. [Development](#development)
     1. [Production](#production)
+1. [Credits](#credits)
 
 ## Features
 - [x] Participants may do the test on mobile version application. Check out the [CBT Crossword Mobile](https://github.com/labibramadhan/cbt-crossword-mobile) project
@@ -179,3 +179,8 @@ Participant
 email: participant@mailinator.com
 pass: asdqwe123
 ```
+
+## Credits
+
+1. [AngularJS Seed](https://github.com/angular/angular-seed)
+1. @satchamo for [Crossword-Generator](https://github.com/satchamo/Crossword-Generator) package
